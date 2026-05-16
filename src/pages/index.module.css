@@ -1,23 +1,323 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
-.heroBanner {
-  padding: 4rem 0;
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, var(--mv-hero-bg-from) 0%, var(--mv-hero-bg-to) 100%);
+  padding: 5rem 0 4rem;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 0%, rgba(26, 86, 219, 0.15) 0%, transparent 60%);
+  pointer-events: none;
 }
 
-.buttons {
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.heroAccent {
+  color: #60a5fa;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  max-width: 560px;
+  margin: 1rem auto 0.5rem;
+  line-height: 1.6;
+}
+
+.heroBadge {
+  display: inline-block;
+  background: rgba(96, 165, 250, 0.12);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  color: #93c5fd;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.btnPrimary {
+  background: #1a56db;
+  color: #fff !important;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btnPrimary:hover {
+  background: #1447c0;
+  transform: translateY(-1px);
+}
+
+.btnOutline {
+  background: transparent;
+  color: #93c5fd !important;
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.1s;
+}
+
+.btnOutline:hover {
+  border-color: #60a5fa;
+  background: rgba(96, 165, 250, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Sections grid */
+.sectionsWrapper {
+  padding: 4rem 0;
+  background: var(--ifm-background-color);
+}
+
+.sectionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.sectionCard {
+  border: 1px solid var(--mv-card-border);
+  border-radius: 12px;
+  padding: 2rem;
+  background: var(--ifm-card-background-color, var(--ifm-background-color));
+  box-shadow: var(--mv-card-shadow);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.15s;
+}
+
+.sectionCard:hover {
+  box-shadow: 0 8px 24px rgba(26, 86, 219, 0.12);
+  transform: translateY(-2px);
+}
+
+.sectionIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1.25rem;
+  font-size: 1.4rem;
+}
+
+.iconBackend {
+  background: #eff6ff;
+  color: #1a56db;
+}
+
+.iconFrontend {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.iconIntegration {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+[data-theme='dark'] .iconBackend { background: #1e3a5f; color: #60a5fa; }
+[data-theme='dark'] .iconFrontend { background: #14532d; color: #4ade80; }
+[data-theme='dark'] .iconIntegration { background: #431407; color: #fb923c; }
+
+.sectionCard h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.sectionCard p {
+  font-size: 0.95rem;
+  color: var(--ifm-color-secondary-darkest);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+
+.sectionItems {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.sectionItems li {
+  font-size: 0.875rem;
+  color: var(--ifm-color-content-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sectionItems li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+  flex-shrink: 0;
+}
+
+.sectionLink {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: auto;
+}
+
+.sectionLink:hover {
+  text-decoration: underline;
+}
+
+.sectionLink::after {
+  content: '->';
+  transition: transform 0.15s;
+}
+
+.sectionLink:hover::after {
+  transform: translateX(3px);
+}
+
+/* Tech stack */
+.techWrapper {
+  padding: 3.5rem 0;
+  background: var(--mv-section-bg);
+}
+
+.techGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.techBadge {
+  background: var(--mv-badge-bg);
+  color: var(--mv-badge-color);
+  border: 1px solid rgba(26, 86, 219, 0.15);
+  border-radius: 8px;
+  padding: 0.45rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.techCategory {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+  font-weight: 600;
+}
+
+/* Quick start */
+.quickWrapper {
+  padding: 4rem 0;
+  background: var(--ifm-background-color);
+}
+
+.quickGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.quickCard {
+  border: 1px solid var(--mv-card-border);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.quickStep {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.quickCard h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.quickCard p {
+  font-size: 0.875rem;
+  color: var(--ifm-color-content-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Section headings */
+.sectionHeading {
+  text-align: center;
+}
+
+.sectionHeading h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.sectionHeading p {
+  color: var(--ifm-color-content-secondary);
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.4rem;
+  }
+
+  .heroButtons {
+    flex-direction: column;
+    align-items: center;
+  }
 }
