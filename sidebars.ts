@@ -3,6 +3,8 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   mainSidebar: [
     'intro',
+    'guia-instalacion',
+    'glosario',
   ],
   backendSidebar: [
     {
@@ -16,6 +18,9 @@ const sidebars: SidebarsConfig = {
         'backend/security',
         'backend/data-structures',
         'backend/configuration',
+        'backend/variables-entorno',
+        'backend/manejo-errores',
+        'backend/pruebas',
         {
           type: 'category',
           label: 'Casos de Uso',
